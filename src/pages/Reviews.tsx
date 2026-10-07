@@ -218,7 +218,7 @@ export function Reviews() {
             onClick={() => setVisibleCount(v => Math.min(v + 20, REVIEWS.length))}
             className="w-full mt-6 py-3 rounded-xl bg-green-500 text-white font-semibold hover:bg-green-600 transition"
           >
-            Load More Reviews ({REVIEWS.length - visibleCount} remaining)
+            Load More Reviews
           </button>
         )}
 

@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { TierCard } from '@/components/TierCard'
 import { PaymentForm } from '@/components/PaymentForm'
 import { SocialProof } from '@/components/SocialProof'
 import { SplashScreen } from '@/components/SplashScreen'
+import { Reviews } from '@/pages/Reviews'
 
 const TIERS = [
   { limit: 3000, fee: 49 },
@@ -26,12 +27,21 @@ const TIERS = [
 export default function App() {
   const [selectedTier, setSelectedTier] = useState<number | null>(null)
   const [showPayment, setShowPayment] = useState(false)
+  const [page, setPage] = useState(window.location.hash === '#reviews' ? 'reviews' : 'home')
   const selected = selectedTier !== null ? TIERS[selectedTier] : null
+
+  useEffect(() => {
+    const handleHash = () => setPage(window.location.hash === '#reviews' ? 'reviews' : 'home')
+    window.addEventListener('hashchange', handleHash)
+    return () => window.removeEventListener('hashchange', handleHash)
+  }, [])
 
   const handleSelectTier = (index: number) => {
     setSelectedTier(index)
     setShowPayment(true)
   }
+
+  if (page === 'reviews') return <Reviews />
 
   return (
     <>
@@ -176,6 +186,9 @@ export default function App() {
             <p className="text-center text-xs text-slate-400">
               Trusted by over 250,000 Kenyans for Fuliza limit upgrades
             </p>
+            <a href="#reviews" className="mt-3 block text-center text-sm font-semibold text-green-600 hover:underline">
+              Read 215+ Customer Reviews →
+            </a>
           </section>
 
           {/* Footer */}

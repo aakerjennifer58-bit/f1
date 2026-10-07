@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
 
 interface PaymentFormProps {
   selectedLimit: number
@@ -107,114 +105,118 @@ export function PaymentForm({ selectedLimit, selectedFee }: PaymentFormProps) {
 
   if (step === 'waiting') {
     return (
-      <div className="bg-gray-50/80 rounded-2xl p-6 mt-8 text-center">
-        <div className="mx-auto size-10 animate-spin rounded-full border-4 border-green-500 border-t-transparent mb-4" />
-        <h2 className="text-xl font-semibold text-gray-900">Check your phone</h2>
-        <div className="bg-gray-900 rounded-xl p-4 mt-4 text-left text-white max-w-xs mx-auto">
-          <p className="text-xs text-gray-400">M-PESA</p>
-          <p className="mt-1 text-sm">Pay Ksh {selectedFee.toLocaleString()} to FULIZA BOOST?</p>
-          <p className="mt-1 text-xs text-gray-400">Enter M-PESA PIN on your phone</p>
+      <div className="card py-10 text-center">
+        <div className="mx-auto size-16 mb-6 relative">
+          <div className="absolute inset-0 rounded-full border-4 border-green-500/20" />
+          <div className="absolute inset-0 rounded-full border-4 border-green-500 border-t-transparent animate-spin" />
         </div>
-        <p className="text-sm text-gray-500 mt-4">Enter your M-Pesa PIN to complete payment.</p>
+        <h2 className="text-xl font-bold text-slate-900 mb-2">Check Your Phone</h2>
+        <div className="bg-slate-900 rounded-xl p-4 mt-4 text-left max-w-xs mx-auto">
+          <p className="text-xs text-slate-400">M-PESA</p>
+          <p className="mt-1 text-sm text-white">Pay Ksh {selectedFee.toLocaleString()} to FULIZA BOOST?</p>
+          <p className="mt-1 text-xs text-slate-400">Enter M-PESA PIN on your phone</p>
+        </div>
+        <p className="text-sm text-slate-500 mt-4">Waiting for payment confirmation...</p>
       </div>
     )
   }
 
   if (step === 'success') {
     return (
-      <div className="bg-gray-50/80 rounded-2xl p-6 mt-8 text-center">
-        <div className="mx-auto grid size-14 place-items-center rounded-full bg-green-500 text-3xl text-white mb-4">✓</div>
-        <h2 className="text-xl font-semibold text-gray-900">Payment Successful!</h2>
-        <p className="text-gray-500 mt-2">
-          Ksh {selectedFee.toLocaleString()} paid successfully.
-        </p>
-        {receipt && <p className="text-xs text-gray-400 mt-1">Receipt: {receipt}</p>}
-        <p className="text-sm mt-4">
-          Your Fuliza limit of <strong>Ksh {selectedLimit.toLocaleString()}</strong> is being processed.
-        </p>
-        <p className="text-xs text-gray-400 mt-2">You will receive an SMS confirmation shortly.</p>
+      <div className="card py-10 text-center">
+        <div className="mx-auto size-16 grid place-items-center rounded-full bg-green-500 text-3xl text-white mb-4 animate-float">
+          ✓
+        </div>
+        <h2 className="text-2xl font-bold text-slate-900 mb-2">Payment Successful!</h2>
+        <p className="text-slate-500">Ksh {selectedFee.toLocaleString()} received</p>
+        {receipt && <p className="text-xs text-slate-400 mt-1">Receipt: {receipt}</p>}
+
+        <div className="rounded-xl bg-green-50 border border-green-100 p-4 mt-6 max-w-xs mx-auto">
+          <p className="text-sm text-slate-500">Your new Fuliza limit</p>
+          <p className="text-3xl font-bold text-green-600">Ksh {selectedLimit.toLocaleString()}</p>
+        </div>
+
+        <p className="text-xs text-slate-400 mt-4">Your limit will be updated within 24 hours</p>
       </div>
     )
   }
 
   if (step === 'failed') {
     return (
-      <div className="bg-gray-50/80 rounded-2xl p-6 mt-8 text-center">
-        <div className="mx-auto grid size-14 place-items-center rounded-full bg-red-500 text-3xl text-white mb-4">✗</div>
-        <h2 className="text-xl font-semibold text-gray-900">Payment Failed</h2>
-        <p className="text-sm text-gray-500 mt-2">{error || 'The payment was not completed.'}</p>
-        <Button onClick={retry} className="mt-4">Try Again</Button>
+      <div className="card py-10 text-center">
+        <div className="mx-auto size-16 grid place-items-center rounded-full bg-red-500 text-3xl text-white mb-4">✗</div>
+        <h2 className="text-xl font-bold text-slate-900 mb-2">Payment Failed</h2>
+        <p className="text-sm text-slate-500 mb-6">{error || 'The payment was not completed.'}</p>
+        <button onClick={retry} className="btn max-w-xs mx-auto">Try Again</button>
       </div>
     )
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-gray-50/80 rounded-2xl p-6 mt-8">
-      <div className="flex items-start justify-between mb-6">
+    <form onSubmit={handleSubmit} className="card">
+      <div className="flex items-start justify-between mb-6 pb-6 border-b border-slate-100">
         <div>
-          <h2 className="text-xl font-semibold text-gray-900">Complete payment</h2>
-          <p className="text-sm text-gray-500 mt-0.5">
-            New limit Ksh {selectedLimit.toLocaleString()} · Fee Ksh {selectedFee.toLocaleString()}
+          <h2 className="text-xl font-bold text-slate-900">Complete Payment</h2>
+          <p className="text-sm text-slate-500 mt-0.5">
+            Upgrade to Ksh {selectedLimit.toLocaleString()}
           </p>
         </div>
         <div className="text-right">
-          <p className="text-xs text-gray-400">Amount to pay</p>
-          <p className="text-xl font-bold text-green-600">Ksh {selectedFee.toLocaleString()}</p>
+          <p className="text-xs text-slate-400">Amount</p>
+          <p className="text-2xl font-bold text-green-600">Ksh {selectedFee.toLocaleString()}</p>
         </div>
       </div>
 
       <div className="space-y-5">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
-            Full Names (as in ID)
+          <label className="block text-sm font-semibold text-slate-700 mb-2">
+            Full Name (as on ID)
           </label>
-          <Input
+          <input
+            className="input"
             placeholder="Jane Wanjiku Mwangi"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
             required
           />
-          <p className="text-xs text-gray-400 mt-1.5">
-            Enter your full names as they appear on your ID.
-          </p>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label className="block text-sm font-semibold text-slate-700 mb-2">
             ID Number
           </label>
-          <Input
+          <input
+            className="input"
             placeholder="12345678"
             value={idNumber}
             onChange={(e) => setIdNumber(e.target.value)}
             pattern="[0-9]{7,8}"
             required
           />
-          <p className="text-xs text-gray-400 mt-1.5">
-            Enter your Kenyan National ID number (7-8 digits).
-          </p>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label className="block text-sm font-semibold text-slate-700 mb-2">
             M-Pesa Phone Number
           </label>
-          <Input
-            placeholder="0712345678"
+          <input
+            className="input"
+            placeholder="0712 345 678"
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
             required
           />
-          <p className="text-xs text-gray-400 mt-1.5">
-            Formats accepted: 07XXXXXXXX, 01XXXXXXXX or 2547XXXXXXXX.
-          </p>
         </div>
 
-        {error && <p className="text-sm text-red-600">{error}</p>}
+        {error && (
+          <div className="rounded-xl bg-red-50 border border-red-100 p-3">
+            <p className="text-sm text-red-600">{error}</p>
+          </div>
+        )}
 
-        <Button type="submit" size="lg" className="w-full mt-2">
-          Pay Ksh {selectedFee.toLocaleString()} with M-Pesa
-        </Button>
+        <button type="submit" className="btn text-lg font-bold">
+          Pay Ksh {selectedFee.toLocaleString()}
+        </button>
       </div>
     </form>
   )

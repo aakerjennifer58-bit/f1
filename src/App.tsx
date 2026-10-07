@@ -193,8 +193,11 @@ export default function App() {
             <div className="flex justify-center gap-6 text-xs font-medium text-slate-400">
               <a href="#" className="hover:text-green-600">Privacy</a>
               <a href="#" className="hover:text-green-600">Terms</a>
-              <a href="#" className="hover:text-green-600">Contact</a>
+              <a href="mailto:hello@fulizaincreaseboost.com" className="hover:text-green-600">Contact</a>
             </div>
+            <p className="text-center text-xs text-slate-400 mt-2">
+              <a href="mailto:hello@fulizaincreaseboost.com" className="hover:text-green-600">hello@fulizaincreaseboost.com</a>
+            </p>
             <p className="text-[10px] text-slate-400 max-w-md mx-auto leading-relaxed">
               Fuliza Boost is an independent service. Safaricom, Fuliza and M-PESA are registered trademarks of their respective owners.
             </p>

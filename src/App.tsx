@@ -24,8 +24,14 @@ const TIERS = [
 ]
 
 export default function App() {
-  const [selectedTier, setSelectedTier] = useState(4)
-  const selected = TIERS[selectedTier]
+  const [selectedTier, setSelectedTier] = useState<number | null>(null)
+  const [showPayment, setShowPayment] = useState(false)
+  const selected = selectedTier !== null ? TIERS[selectedTier] : null
+
+  const handleSelectTier = (index: number) => {
+    setSelectedTier(index)
+    setShowPayment(true)
+  }
 
   return (
     <>
@@ -108,16 +114,41 @@ export default function App() {
                   fee={tier.fee}
                   isSelected={selectedTier === index}
                   isPopular={tier.popular}
-                  onClick={() => setSelectedTier(index)}
+                  onClick={() => handleSelectTier(index)}
                 />
               ))}
             </div>
           </section>
 
-          {/* Payment Form */}
-          <section>
-            <PaymentForm selectedLimit={selected.limit} selectedFee={selected.fee} />
-          </section>
+          {/* Payment Modal */}
+          {showPayment && selected && (
+            <div className="fixed inset-0 z-50 grid place-items-center bg-black/60 backdrop-blur-sm p-4">
+              <div className="card w-full max-w-md relative">
+                <button
+                  onClick={() => setShowPayment(false)}
+                  className="absolute top-4 right-4 grid size-8 place-items-center rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 transition"
+                >
+                  <svg className="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+
+                <div className="mb-4 pb-4 border-b border-slate-100">
+                  <h3 className="text-lg font-bold text-slate-900">Complete Payment</h3>
+                  <p className="text-sm text-slate-500">Target limit: <span className="font-semibold text-green-600">Ksh {selected.limit.toLocaleString()}</span></p>
+                </div>
+
+                <PaymentForm selectedLimit={selected.limit} selectedFee={selected.fee} />
+
+                <button
+                  onClick={() => setShowPayment(false)}
+                  className="mt-4 w-full rounded-xl border border-slate-200 bg-slate-50 py-3 text-sm font-semibold text-slate-600 hover:bg-slate-100 transition"
+                >
+                  Change Limit
+                </button>
+              </div>
+            </div>
+          )}
 
           {/* Trust Badges */}
           <section className="mt-8 rounded-2xl bg-slate-100/50 p-6">

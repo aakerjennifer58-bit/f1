@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { TierCard } from '@/components/TierCard'
 import { PaymentForm } from '@/components/PaymentForm'
+import { SocialProof } from '@/components/SocialProof'
 
 const TIERS = [
   { limit: 3000, fee: 49 },
@@ -27,7 +28,9 @@ export default function App() {
   const selected = TIERS[selectedTier]
 
   return (
-    <main className="min-h-screen py-12 px-4">
+    <>
+      <SocialProof />
+      <main className="min-h-screen py-12 px-4">
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10">
@@ -67,5 +70,6 @@ export default function App() {
         </footer>
       </div>
     </main>
+    </>
   )
 }

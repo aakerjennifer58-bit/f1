@@ -33,8 +33,8 @@ export function SocialProof() {
 
   return (
     <div className="fixed top-4 left-1/2 z-50 -translate-x-1/2 animate-fade-in">
-      <div className="flex items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-green-600 px-4 py-2 text-sm font-medium text-white shadow-lg">
-        <span className="grid size-6 place-items-center rounded-full bg-white/20 text-xs">✓</span>
+      <div className="flex items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-green-600 px-3 py-2 text-xs sm:text-sm font-medium text-white shadow-lg whitespace-nowrap">
+        <span className="grid size-5 sm:size-6 shrink-0 place-items-center rounded-full bg-white/20 text-xs">✓</span>
         <span>{current.phone} boosted to <b>Ksh {current.limit.toLocaleString()}</b></span>
       </div>
     </div>

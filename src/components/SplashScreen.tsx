@@ -5,9 +5,7 @@ export function SplashScreen() {
   const [fadeOut, setFadeOut] = useState(false)
 
   useEffect(() => {
-    // Start fade out after 2.5 seconds
     const fadeTimer = setTimeout(() => setFadeOut(true), 2500)
-    // Remove from DOM after fade completes
     const hideTimer = setTimeout(() => setVisible(false), 3000)
 
     return () => {
@@ -19,7 +17,14 @@ export function SplashScreen() {
   if (!visible) return null
 
   return (
-    <div className={`splash-screen ${fadeOut ? 'fade-out' : ''}`}>
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center transition-opacity duration-500"
+      style={{
+        backgroundColor: '#000',
+        opacity: fadeOut ? 0 : 1,
+        pointerEvents: fadeOut ? 'none' : 'auto'
+      }}
+    >
       <img
         src="/splash.gif"
         alt="Loading"

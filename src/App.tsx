@@ -75,7 +75,7 @@ export default function App() {
                   <span className="size-1.5 rounded-full bg-green-400 animate-pulse" />
                   Instant Upgrade
                 </span>
-                <img src="/mpesa.png" alt="Lipa Na M-Pesa" className="h-6 object-contain" />
+                <img src="/mpesa.png" alt="Lipa Na M-Pesa" className="h-6 object-contain bg-white rounded px-2" />
               </div>
 
               <h1 className="text-3xl font-extrabold tracking-tight">

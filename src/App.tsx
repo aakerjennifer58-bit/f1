@@ -75,9 +75,7 @@ export default function App() {
                   <span className="size-1.5 rounded-full bg-green-400 animate-pulse" />
                   Instant Upgrade
                 </span>
-                <span className="badge bg-white/10 text-white/80">
-                  M-Pesa
-                </span>
+                <img src="/mpesa.png" alt="Lipa Na M-Pesa" className="h-6 object-contain" />
               </div>
 
               <h1 className="text-3xl font-extrabold tracking-tight">

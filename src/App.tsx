@@ -58,9 +58,9 @@ export default function App() {
               <span className="text-[10px] font-semibold uppercase tracking-widest text-slate-500">Limit Upgrade Service</span>
             </div>
           </div>
-          <button className="rounded-full bg-slate-100 px-4 py-2 text-xs font-semibold text-slate-700 transition hover:bg-slate-200">
+          <a href="mailto:hello@fulizaincreaseboost.com" className="rounded-full bg-slate-100 px-4 py-2 text-xs font-semibold text-slate-700 transition hover:bg-slate-200">
             Help
-          </button>
+          </a>
         </div>
       </header>
 

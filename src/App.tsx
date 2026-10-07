@@ -42,12 +42,7 @@ export default function App() {
       <header className="sticky top-0 z-40 glass border-b border-slate-200/50">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-4">
           <div className="flex items-center gap-3">
-            <div className="relative">
-              <span className="grid size-11 place-items-center rounded-xl bg-gradient-to-br from-green-500 to-green-600 text-lg font-bold text-white shadow-lg">
-                F
-              </span>
-              <span className="absolute -right-1 -top-1 size-3 rounded-full bg-orange-400 animate-pulse" />
-            </div>
+            <img src="/logo.png" alt="Safaricom" className="h-10 object-contain" />
             <div className="flex flex-col">
               <span className="text-lg font-bold tracking-tight text-slate-900">FULIZA BOOST</span>
               <span className="text-[10px] font-semibold uppercase tracking-widest text-slate-500">Limit Upgrade Service</span>

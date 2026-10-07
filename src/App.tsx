@@ -122,7 +122,8 @@ export default function App() {
 
           {/* Payment Modal */}
           {showPayment && selected && (
-            <div className="fixed inset-0 z-50 grid place-items-center bg-black/60 backdrop-blur-sm p-4">
+            <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm p-4">
+              <div className="min-h-full flex items-center justify-center py-8">
               <div className="card w-full max-w-md relative">
                 <button
                   onClick={() => setShowPayment(false)}
@@ -146,6 +147,7 @@ export default function App() {
                 >
                   Change Limit
                 </button>
+              </div>
               </div>
             </div>
           )}

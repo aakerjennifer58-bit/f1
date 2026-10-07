@@ -98,10 +98,10 @@ export default function App() {
                   <p className="text-2xl font-bold text-green-400">5min</p>
                   <p className="text-xs text-white/50">Avg. Time</p>
                 </div>
-                <div>
+                <a href="#reviews" className="block hover:opacity-80 transition">
                   <p className="text-2xl font-bold text-green-400">4.8★</p>
-                  <p className="text-xs text-white/50">User Rating</p>
-                </div>
+                  <p className="text-xs text-white/50 underline">Reviews</p>
+                </a>
               </div>
             </div>
           </section>
@@ -186,9 +186,6 @@ export default function App() {
             <p className="text-center text-xs text-slate-400">
               Trusted by over 250,000 Kenyans for Fuliza limit upgrades
             </p>
-            <a href="#reviews" className="mt-3 block text-center text-sm font-semibold text-green-600 hover:underline">
-              Read 215+ Customer Reviews →
-            </a>
           </section>
 
           {/* Footer */}
